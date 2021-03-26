@@ -24,7 +24,7 @@
 				}
 				
 				//incomes and expenses data pull from database
-				if ($dates_validation == true) {
+				if ($dates_validation) {
 					require_once 'db_connection.php';  
 					
 					//incomes data pull by category name and sum of individual incomes
@@ -100,7 +100,7 @@
 						dataPoints: 
 						[
 							<?php
-								if($dates_selection == true){
+								if($dates_selection){
 									foreach ($incomes_data as $row){
 									echo "{y:{$row['sum_of_incomes']}, label:'{$row['name']}'},"; 
 									}
@@ -133,7 +133,7 @@
 							dataPoints: 
 							[
 								<?php		
-									if($dates_selection == true){
+									if($dates_selection){
 										foreach ($expenses_data as $row){
 										echo "{y:{$row['sum_of_expenses']}, label:'{$row['name']}'},"; 
 										}	
@@ -205,7 +205,7 @@
 										echo $_SESSION['date_error_message'];
 										unset($_SESSION['date_error_message']);
 								}
-								if($dates_selection == true){															
+								if($dates_selection){															
 									foreach ($incomes_data as $row){
 										$sum_of_incomes = $sum_of_incomes + floatval ($row['sum_of_incomes']);
 									}
@@ -219,7 +219,7 @@
 									echo '<div class="line"></div>';
 								}
 								
-								if(($total_balance == 0)&&($dates_selection == true)){
+								if(($total_balance == 0)&&($dates_selection)){
 									echo "<div class='balance_positive'>Your incomes are equal to your expenses in selected time frame.</div>";
 								}
 								if($total_balance > 0){
@@ -236,7 +236,7 @@
 								<div id="incomes_column1">
 									<div class="first_line bg-info"> Category </div>
 										<?php													
-											if($dates_selection == true){															
+											if($dates_selection){															
 													foreach ($incomes_data as $row){
 														echo "<div class='line'>{$row['name']}</div>";
 													}	
@@ -248,19 +248,19 @@
 								<div id="incomes_column2">
 									<div class="first_line bg-info"> Amount </div>
 										<?php
-											if($dates_selection == true){
+											if($dates_selection){
 												foreach ($incomes_data as $row){
 													echo "<div class='line'>{$row['sum_of_incomes']}</div>";}
 											} else echo '<div class="line"></div>';
 										?>
-									<div class="last_line bg-info"> <?= ($dates_selection == true)? $sum_of_incomes : 0 ?> </div>
+									<div class="last_line bg-info"> <?= ($dates_selection)? $sum_of_incomes : 0 ?> </div>
 								</div>	
 									
 							</div>
 							
 							<div class="incomes_balance_summary">
 								<?php
-									if($dates_selection == true){
+									if($dates_selection){
 										echo "<div><script src='https://canvasjs.com/assets/script/canvasjs.min.js'></script></div>";
 										echo "<div id='incomes_pie_chart'></div>";
 											if ($sum_of_incomes == 0) {echo "<div style ='font-size: 15px; margin: 15px; text-align: center;'> The selected date range did not show any incomes </div>";}
@@ -277,7 +277,7 @@
 								<div id="expenses_column1">
 									<div class="first_line bg-info"> Category </div>
 										<?php													
-											if($dates_selection == true){															
+											if($dates_selection){															
 													foreach ($expenses_data as $row){
 														echo "<div class='line'>{$row['name']}</div>";
 													}	
@@ -289,19 +289,19 @@
 								<div id="expenses_column2">
 									<div class="first_line bg-info"> Amount </div>
 										<?php
-											if($dates_selection == true){
+											if($dates_selection){
 												foreach ($expenses_data as $row){
 													echo "<div class='line'>{$row['sum_of_expenses']}</div>";}
 											} else echo '<div class="line"></div>';
 										?>
-									<div class="last_line bg-info"> <?= ($dates_selection == true)? $sum_of_expenses : 0 ?> </div>
+									<div class="last_line bg-info"> <?= ($dates_selection)? $sum_of_expenses : 0 ?> </div>
 								</div>
 												
 							</div>
 							
 							<div class="expenses_balance_summary">
 								<?php
-									if($dates_selection == true){
+									if($dates_selection){
 										echo "<div><script src='https://canvasjs.com/assets/script/canvasjs.min.js'></script></div>";
 										echo "<div id='expenses_pie_chart'></div>";
 										if ($sum_of_expenses == 0) {echo "<div style ='font-size: 15px; margin: 15px; text-align: center;'> The selected date range did not show any expenses </div>";}

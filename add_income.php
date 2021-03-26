@@ -27,7 +27,7 @@
 			}
 			
 			//mysql transfer of income data
-			if($data_entry_validation == true){
+			if($data_entry_validation){
 				
 				require_once 'db_connection.php';
 				
