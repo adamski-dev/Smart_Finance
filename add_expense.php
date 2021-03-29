@@ -40,7 +40,7 @@
 					$query -> bindValue(':expense_comment', $_POST['expense_comment'], PDO::PARAM_STR);
 					$query -> execute();
 					
-					$_SESSION['expense_transferred'] = '<div style ="color: green; font-size: 18px; text-align:center; margin-bottom: 15px;"> Expense added successfully </br> Thank You </div>';
+					$_SESSION['expense_transferred'] = '<div style ="color: green; font-size: 16px; text-align:center; margin-bottom: 15px;"> Expense added successfully </br> Thank You </div>';
 				}
 			}
 

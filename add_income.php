@@ -40,7 +40,7 @@
 					$query -> bindValue(':income_comment', $_POST['income_comment'], PDO::PARAM_STR);
 					$query -> execute();
 					
-					$_SESSION['income_transferred'] = '<div style ="color: green; font-size: 18px; text-align:center; margin-bottom: 15px;"> Income added successfully </br> Thank You </div>';
+					$_SESSION['income_transferred'] = '<div style ="color: green; font-size: 16px; text-align:center; margin-bottom: 15px;"> Income added successfully </br> Thank You </div>';
 					
 				}
 			}		
