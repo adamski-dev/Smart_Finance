@@ -13,7 +13,7 @@
 			$validation_successful = false;
 			$_SESSION['error_message'] = '<div style ="color: red; font-size: 15px;"> Username must contain between 3 and 15 characters !</div>';	
 		}
-		if(ctype_alnum($user_name) == false)
+		if(!ctype_alnum($user_name))
 		{
 			$validation_successful = false;
 			$_SESSION['error_message'] = '<div style ="color: red; font-size: 15px;"> Username can only contain letters and numbers !</div>';
@@ -74,7 +74,7 @@
 			}
 			
 			//write new user to database
-			if($validation_successful == true)
+			if($validation_successful)
 			{
 				$query = $database -> prepare ('INSERT INTO users VALUES (NULL, :username, :password, :email)');
 				$query -> bindValue(':username', $user_name, PDO::PARAM_STR);
